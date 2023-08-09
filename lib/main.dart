@@ -1,7 +1,18 @@
+import 'package:anywhere_coding_exercise/bloc/simpsons/simpsons_bloc.dart';
+import 'package:anywhere_coding_exercise/bloc/wire/wire_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
-  runApp(const AnywhereeApp());
+  runApp(
+    MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => SimpsonsBloc()),
+        BlocProvider(create: (context) => WireBloc()),
+      ],
+      child: const AnywhereeApp(),
+    ),
+  );
 }
 
 // final appRouter = AppRouter();
