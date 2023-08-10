@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
+
 class CharacterInfo {
   final String? characterAbstract;
   final String? abstractSource;
@@ -390,7 +392,16 @@ class RelatedTopic {
 
   String? getCharacterName() {
     if (text == null) return null;
-    return text!.split("-").first.trim();
+    int endIndex = text!.indexOf("-");
+    String name = text!.substring(0, endIndex - 1);
+    return name.trim();
+  }
+
+  String? getSimplifiedDesceription() {
+    if (text == null) return null;
+    int startIndex = text!.indexOf("-");
+    String description = text!.substring(startIndex + 1);
+    return description.trim();
   }
 
   factory RelatedTopic.fromRawJson(String str) =>
@@ -423,6 +434,12 @@ class Icon {
     this.url,
     this.width,
   });
+
+  String? getUrlPath() {
+    if (url == null || url == "") return null;
+    print("https://duckduckgo.com/$url");
+    return "https://duckduckgo.com/$url";
+  }
 
   factory Icon.fromRawJson(String str) => Icon.fromJson(json.decode(str));
 

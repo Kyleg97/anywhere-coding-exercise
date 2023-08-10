@@ -1,6 +1,7 @@
 import 'package:anywhere_coding_exercise/bloc/simpsons/simpsons_bloc.dart';
 import 'package:anywhere_coding_exercise/components/base_screen.dart';
 import 'package:anywhere_coding_exercise/models/character_model.dart';
+import 'package:anywhere_coding_exercise/screens/character_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -44,7 +45,12 @@ class VariantOne extends StatelessWidget {
       itemCount: simpsonsCharacters.length,
       itemBuilder: (context, index) {
         return GestureDetector(
-          onTap: () => print("go to character detail screen"),
+          onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute<void>(
+                builder: (_) => CharacterDetailScreen(
+                    characterData: simpsonsCharacters[index]),
+              )),
           child: Text(simpsonsCharacters[index].getCharacterName() ?? "no"),
         );
       },
