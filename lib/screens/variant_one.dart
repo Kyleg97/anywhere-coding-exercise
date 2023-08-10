@@ -1,10 +1,11 @@
 import 'package:anywhere_coding_exercise/bloc/simpsons/simpsons_bloc.dart';
 import 'package:anywhere_coding_exercise/components/base_screen.dart';
+import 'package:anywhere_coding_exercise/models/character_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class VariantOneScreen extends StatelessWidget {
-  const VariantOneScreen({super.key});
+class VariantOne extends StatelessWidget {
+  const VariantOne({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +24,9 @@ class VariantOneScreen extends StatelessWidget {
               ),
             );
           } else if (state is SimpsonsLoaded) {
-            return _buildLoadedSimpsonsWidget();
+            return _buildLoadedSimpsonsWidget(
+              simpsonsCharacters: state.simpsonsCharacters.relatedTopics ?? [],
+            );
           } else {
             return const Center(
               child: Text("Something went wrong."),
@@ -34,9 +37,17 @@ class VariantOneScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildLoadedSimpsonsWidget() {
+  Widget _buildLoadedSimpsonsWidget({
+    required List<RelatedTopic> simpsonsCharacters,
+  }) {
     return ListView.builder(
-      itemBuilder: (context, index) {},
+      itemCount: simpsonsCharacters.length,
+      itemBuilder: (context, index) {
+        return GestureDetector(
+          onTap: () => print("go to character detail screen"),
+          child: Text(simpsonsCharacters[index].getCharacterName() ?? "no"),
+        );
+      },
     );
   }
 }

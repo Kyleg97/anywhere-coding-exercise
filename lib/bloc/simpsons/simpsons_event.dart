@@ -4,7 +4,7 @@ sealed class SimpsonsEvent extends Equatable {
   const SimpsonsEvent();
 }
 
-final class LoadSimpsonsCharacter extends SimpsonsEvent {
+final class LoadSimpsonsCharacters extends SimpsonsEvent {
   @override
   List<Object?> get props => [];
 }

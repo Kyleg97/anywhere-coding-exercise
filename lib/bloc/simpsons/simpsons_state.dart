@@ -27,7 +27,7 @@ class SimpsonsLoadingFailed extends SimpsonsState {
 }
 
 class SimpsonsLoaded extends SimpsonsState {
-  final List<String> simpsonsCharacters; // placeholder until we create model
+  final CharacterInfo simpsonsCharacters;
   const SimpsonsLoaded({required this.simpsonsCharacters});
 
   @override

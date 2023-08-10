@@ -27,7 +27,7 @@ class WireLoadingFailed extends WireState {
 }
 
 class WireLoaded extends WireState {
-  final List<String> wireCharacters; // placeholder until we create model
+  final CharacterInfo wireCharacters; // placeholder until we create model
   const WireLoaded({required this.wireCharacters});
 
   @override

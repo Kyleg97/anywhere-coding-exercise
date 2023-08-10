@@ -1,26 +1,34 @@
+import 'package:anywhere_coding_exercise/api/api_manager.dart';
 import 'package:anywhere_coding_exercise/bloc/simpsons/simpsons_bloc.dart';
 import 'package:anywhere_coding_exercise/bloc/wire/wire_bloc.dart';
+import 'package:anywhere_coding_exercise/screens/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
+  ApiManager().init();
   runApp(
+    // we should check which variant we are using so we don't waste resources
+    // calling the unused endpoint
     MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => SimpsonsBloc()),
-        BlocProvider(create: (context) => WireBloc()),
+        BlocProvider(
+          create: (context) => SimpsonsBloc()..add(LoadSimpsonsCharacters()),
+        ),
+        BlocProvider(
+          create: (context) => WireBloc()..add(LoadWireCharacters()),
+        ),
       ],
-      child: const AnywhereeApp(),
+      child: const AnywhereApp(),
     ),
   );
 }
 
 // final appRouter = AppRouter();
 
-class AnywhereeApp extends StatelessWidget {
-  const AnywhereeApp({super.key});
+class AnywhereApp extends StatelessWidget {
+  const AnywhereApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -29,7 +37,7 @@ class AnywhereeApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const Placeholder(),
+      home: const MainScreen(),
     );
   }
 }
