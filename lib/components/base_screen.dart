@@ -13,9 +13,10 @@ class BaseScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text(title),
+        centerTitle: true,
+        scrolledUnderElevation: 0.0,
       ),
       body: child,
     );

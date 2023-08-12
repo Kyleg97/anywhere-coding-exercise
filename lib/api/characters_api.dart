@@ -14,8 +14,6 @@ class CharactersApi {
           .get("http://api.duckduckgo.com/?q=simpsons+characters&format=json");
       var data = jsonDecode(response.data);
       CharacterInfo character = CharacterInfo.fromJson(data);
-      /*List<Character> simpsonsCharacters = List<Character>.from(
-          data.map((character) => Character.fromJson(character)));*/
       return Success(character);
     } on DioException catch (e) {
       return Failure(e.message);
@@ -26,8 +24,9 @@ class CharactersApi {
     try {
       Response response = await dio
           .get("http://api.duckduckgo.com/?q=the+wire+characters&format=json");
-      // decode json
-      return Success(response);
+      var data = jsonDecode(response.data);
+      CharacterInfo character = CharacterInfo.fromJson(data);
+      return Success(character);
     } on DioException catch (e) {
       return Failure(e.message);
     }
