@@ -20,7 +20,7 @@ class SimpsonsLoading extends SimpsonsState {
 
 class SimpsonsLoadingFailed extends SimpsonsState {
   final Failure error;
-  const SimpsonsLoadingFailed({required this.error});
+  const SimpsonsLoadingFailed(this.error);
 
   @override
   List<Object?> get props => [error];

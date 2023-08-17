@@ -20,7 +20,7 @@ class SimpsonsBloc extends Bloc<SimpsonsEvent, SimpsonsState> {
               ),
             );
           } else if (result is Failure) {
-            emit(SimpsonsLoadingFailed(error: result));
+            emit(SimpsonsLoadingFailed(result));
           }
         },
       );
