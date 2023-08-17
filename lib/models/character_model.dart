@@ -397,7 +397,7 @@ class RelatedTopic {
     return name.trim();
   }
 
-  String? getSimplifiedDesceription() {
+  String? getSimplifiedDescription() {
     if (text == null) return null;
     int startIndex = text!.indexOf("-");
     String description = text!.substring(startIndex + 1);

@@ -49,7 +49,7 @@ class CharacterDetailScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 10),
                       Text(
-                        characterData.getSimplifiedDesceription() ??
+                        characterData.getSimplifiedDescription() ??
                             "No description available",
                         textAlign: TextAlign.center,
                         style: const TextStyle(fontSize: 16),
