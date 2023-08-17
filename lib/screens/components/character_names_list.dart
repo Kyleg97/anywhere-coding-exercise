@@ -1,7 +1,7 @@
 import 'package:anywhere_coding_exercise/helpers.dart';
 import 'package:anywhere_coding_exercise/models/character_model.dart'
     as character;
-import 'package:anywhere_coding_exercise/screens/character_detail_screen.dart';
+import 'package:anywhere_coding_exercise/screens/components/character_detail_screen.dart';
 import 'package:flutter/material.dart';
 
 class CharacterNamesList extends StatefulWidget {
@@ -45,7 +45,6 @@ class _CharacterNamesListState extends State<CharacterNamesList> {
                   ),
                 );
               } else if (widget.deviceType == DeviceType.tablet) {
-                print("ok we should do something...");
                 widget.onPressed!(index);
               }
             },

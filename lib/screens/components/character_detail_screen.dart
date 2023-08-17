@@ -25,12 +25,14 @@ class CharacterDetailScreen extends StatelessWidget {
                     )
                   : SizedBox.square(
                       dimension: 175,
-                      child: Image.network(
-                        characterData.icon!.getUrlPath()!,
-                        // placeholder: (context, url) =>
-                        // const CircularProgressIndicator(),
-                        // errorWidget: (context, url, error) =>
-                        // Image.asset("assets/placeholder.png"),
+                      child: CachedNetworkImage(
+                        imageUrl: characterData.icon!.getUrlPath()!,
+                        placeholder: (context, url) => const SizedBox.square(
+                          dimension: 25,
+                          child: CircularProgressIndicator(),
+                        ),
+                        errorWidget: (context, url, error) =>
+                            Image.asset("assets/placeholder.png"),
                       ),
                     ),
               const SizedBox(height: 10),

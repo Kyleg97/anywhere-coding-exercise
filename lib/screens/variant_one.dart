@@ -1,8 +1,8 @@
 import 'package:anywhere_coding_exercise/bloc/simpsons/simpsons_bloc.dart';
 import 'package:anywhere_coding_exercise/components/base_screen.dart';
 import 'package:anywhere_coding_exercise/helpers.dart';
-import 'package:anywhere_coding_exercise/screens/character_detail_screen.dart';
-import 'package:anywhere_coding_exercise/screens/variant_one/components/character_names_list.dart';
+import 'package:anywhere_coding_exercise/screens/components/character_detail_screen.dart';
+import 'package:anywhere_coding_exercise/screens/components/character_names_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -48,7 +48,6 @@ class _VariantOneState extends State<VariantOne> {
                           deviceType: deviceType,
                           onPressed: (int index) {
                             setState(() {
-                              print("index: $index");
                               selectedCharacterIndex = index;
                             });
                           }),

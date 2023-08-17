@@ -1,7 +1,7 @@
 import 'package:anywhere_coding_exercise/api/api_manager.dart';
 import 'package:anywhere_coding_exercise/bloc/simpsons/simpsons_bloc.dart';
 import 'package:anywhere_coding_exercise/bloc/wire/wire_bloc.dart';
-import 'package:anywhere_coding_exercise/screens/variant_one/variant_one.dart';
+import 'package:anywhere_coding_exercise/screens/variant_one.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
