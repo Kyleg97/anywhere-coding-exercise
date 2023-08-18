@@ -8,8 +8,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 void main() {
   ApiManager().init();
   runApp(
-    // we should check which variant we are using so we don't waste resources
-    // calling the unused endpoint
+    // TODO: we should check which variant we are using so we don't
+    // waste resources calling the unused endpoint
     MultiBlocProvider(
       providers: [
         BlocProvider(
