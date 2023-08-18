@@ -40,6 +40,7 @@ dependencies:
   build_runner: ^2.4.6
   dio: ^5.3.2
   cached_network_image: ^3.2.3
+  flutter_flavorizr: ^2.2.1
 
 dev_dependencies:
   flutter_test:

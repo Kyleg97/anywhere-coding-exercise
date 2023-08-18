@@ -61,6 +61,7 @@ class _CharacterNamesListState extends State<CharacterNamesList> {
             icon: const Icon(Icons.cancel),
             onPressed: () {
               setState(() {
+                FocusManager.instance.primaryFocus?.unfocus();
                 controller.clear();
                 filteredCharacters.clear();
                 _filterList();
@@ -83,6 +84,7 @@ class _CharacterNamesListState extends State<CharacterNamesList> {
                   borderRadius: BorderRadius.circular(8),
                   onTap: () {
                     if (widget.deviceType == DeviceType.phone) {
+                      FocusManager.instance.primaryFocus?.unfocus();
                       Navigator.push(
                         context,
                         MaterialPageRoute<void>(
