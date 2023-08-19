@@ -1,50 +1,49 @@
-import 'package:anywhere_coding_exercise/bloc/simpsons/simpsons_bloc.dart';
+import 'package:anywhere_coding_exercise/bloc/characters/characters_bloc.dart';
 import 'package:anywhere_coding_exercise/components/base_screen.dart';
+import 'package:anywhere_coding_exercise/flavors.dart';
 import 'package:anywhere_coding_exercise/helpers.dart';
 import 'package:anywhere_coding_exercise/screens/components/character_detail_screen.dart';
 import 'package:anywhere_coding_exercise/screens/components/character_names_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class VariantOne extends StatefulWidget {
-  const VariantOne({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
 
   @override
-  State<VariantOne> createState() => _VariantOneState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _VariantOneState extends State<VariantOne> {
+class _HomeScreenState extends State<HomeScreen> {
   int selectedCharacterIndex = 0;
   @override
   Widget build(BuildContext context) {
     return BaseScreen(
-      title: "Simpsons Character Viewer",
-      child: BlocBuilder<SimpsonsBloc, SimpsonsState>(
+      title: "${F.title} Character Viewer",
+      child: BlocBuilder<CharactersBloc, CharactersState>(
         builder: (context, state) {
-          if (state is SimpsonsInitial) {
+          if (state is CharactersInitial) {
             return const Center(child: Text("Initial state"));
-          } else if (state is SimpsonsLoading) {
+          } else if (state is CharactersLoading) {
             return const Center(child: CircularProgressIndicator());
-          } else if (state is SimpsonsLoadingFailed) {
+          } else if (state is CharactersLoadingFailed) {
             return Center(
               child: Text(
-                "Failed to load simpsons characters: ${state.error.description}",
+                "Failed to load characters: ${state.error.description}",
               ),
             );
-          } else if (state is SimpsonsLoaded) {
+          } else if (state is CharactersLoaded) {
             var deviceType = getDeviceType(context: context);
             return switch (deviceType) {
               DeviceType.phone => CharacterNamesList(
-                  simpsonsCharacters:
-                      state.simpsonsCharacters.relatedTopics ?? [],
+                  characters: state.characters.relatedTopics ?? [],
                   deviceType: deviceType,
                 ),
               DeviceType.tablet => Row(
                   children: [
                     Expanded(
                       child: CharacterNamesList(
-                          simpsonsCharacters:
-                              state.simpsonsCharacters.relatedTopics ?? [],
+                          characters: state.characters.relatedTopics ?? [],
                           deviceType: deviceType,
                           onPressed: (int index) {
                             setState(() {
@@ -54,8 +53,9 @@ class _VariantOneState extends State<VariantOne> {
                     ),
                     Expanded(
                       child: CharacterDetailScreen(
-                        characterData: state.simpsonsCharacters
-                            .relatedTopics![selectedCharacterIndex],
+                        characterData: state
+                            .characters.relatedTopics![selectedCharacterIndex],
+                        appBar: false,
                       ),
                     ),
                   ],

@@ -1,0 +1,17 @@
+flavors:
+  simpsons:
+    app:
+      name: "Simpsons App"
+
+    android:
+      applicationId: "com.example.simpsons"  
+    ios:
+      bundleId: "com.example.simpsons" 
+  wire:
+    app:
+      name: "Wire App"
+  
+    android:
+      applicationId: "com.example.wire"
+    ios:
+      bundleId: "com.example.wire"

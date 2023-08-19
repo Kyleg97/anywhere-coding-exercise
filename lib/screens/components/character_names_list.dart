@@ -7,12 +7,12 @@ import 'package:flutter/material.dart';
 class CharacterNamesList extends StatefulWidget {
   const CharacterNamesList({
     super.key,
-    required this.simpsonsCharacters,
+    required this.characters,
     required this.deviceType,
     this.onPressed,
   });
 
-  final List<character.RelatedTopic> simpsonsCharacters;
+  final List<character.RelatedTopic> characters;
   final DeviceType deviceType;
   final Function(int)? onPressed;
 
@@ -26,12 +26,12 @@ class _CharacterNamesListState extends State<CharacterNamesList> {
 
   @override
   void initState() {
-    filteredCharacters = widget.simpsonsCharacters;
+    filteredCharacters = widget.characters;
     super.initState();
   }
 
   void _filterList() {
-    filteredCharacters = widget.simpsonsCharacters
+    filteredCharacters = widget.characters
         .where((character) => character
             .getCharacterName()!
             .toLowerCase()
@@ -63,8 +63,7 @@ class _CharacterNamesListState extends State<CharacterNamesList> {
               setState(() {
                 FocusManager.instance.primaryFocus?.unfocus();
                 controller.clear();
-                filteredCharacters.clear();
-                _filterList();
+                filteredCharacters = widget.characters;
               });
             },
           ),
@@ -89,11 +88,18 @@ class _CharacterNamesListState extends State<CharacterNamesList> {
                         context,
                         MaterialPageRoute<void>(
                           builder: (_) => CharacterDetailScreen(
-                              characterData: filteredCharacters[index]),
+                            characterData: filteredCharacters[index],
+                            appBar: true,
+                          ),
                         ),
                       );
                     } else if (widget.deviceType == DeviceType.tablet) {
-                      widget.onPressed!(index);
+                      FocusManager.instance.primaryFocus?.unfocus();
+                      int adjustedIndex = widget.characters.indexWhere(
+                          (element) =>
+                              filteredCharacters[index].getCharacterName() ==
+                              element.getCharacterName());
+                      widget.onPressed!(adjustedIndex);
                     }
                   },
                   child: Padding(

@@ -1,7 +1,5 @@
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
-
 class CharacterInfo {
   final String? characterAbstract;
   final String? abstractSource;
@@ -393,6 +391,7 @@ class RelatedTopic {
   String? getCharacterName() {
     if (text == null) return null;
     int endIndex = text!.indexOf("-");
+    if (endIndex == -1) return text;
     String name = text!.substring(0, endIndex - 1);
     return name.trim();
   }
@@ -400,6 +399,7 @@ class RelatedTopic {
   String? getSimplifiedDescription() {
     if (text == null) return null;
     int startIndex = text!.indexOf("-");
+    if (startIndex == -1) return text;
     String description = text!.substring(startIndex + 1);
     return description.trim();
   }
