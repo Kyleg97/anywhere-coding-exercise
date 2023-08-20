@@ -1,4 +1,4 @@
-import 'package:anywhere_coding_exercise/components/base_screen.dart';
+import 'package:anywhere_coding_exercise/screens/components/base_screen.dart';
 import 'package:anywhere_coding_exercise/models/character_model.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';

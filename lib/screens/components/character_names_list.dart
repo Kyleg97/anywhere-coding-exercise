@@ -79,7 +79,6 @@ class _CharacterNamesListState extends State<CharacterNamesList> {
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: InkWell(
-                  splashColor: Colors.purple,
                   borderRadius: BorderRadius.circular(8),
                   onTap: () {
                     if (widget.deviceType == DeviceType.phone) {

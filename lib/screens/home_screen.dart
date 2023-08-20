@@ -1,5 +1,5 @@
 import 'package:anywhere_coding_exercise/bloc/characters/characters_bloc.dart';
-import 'package:anywhere_coding_exercise/components/base_screen.dart';
+import 'package:anywhere_coding_exercise/screens/components/base_screen.dart';
 import 'package:anywhere_coding_exercise/flavors.dart';
 import 'package:anywhere_coding_exercise/helpers.dart';
 import 'package:anywhere_coding_exercise/screens/components/character_detail_screen.dart';
