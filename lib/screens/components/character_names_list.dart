@@ -32,10 +32,15 @@ class _CharacterNamesListState extends State<CharacterNamesList> {
 
   void _filterList() {
     filteredCharacters = widget.characters
-        .where((character) => character
-            .getCharacterName()!
-            .toLowerCase()
-            .contains(controller.text.toLowerCase()))
+        .where((character) =>
+            character
+                .getCharacterName()!
+                .toLowerCase()
+                .contains(controller.text.toLowerCase()) ||
+            character
+                .getSimplifiedDescription()!
+                .toLowerCase()
+                .contains(controller.text.toLowerCase()))
         .toList();
   }
 
