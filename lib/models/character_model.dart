@@ -437,7 +437,6 @@ class Icon {
 
   String? getUrlPath() {
     if (url == null || url == "") return null;
-    print("https://duckduckgo.com/$url");
     return "https://duckduckgo.com/$url";
   }
 
